@@ -1,0 +1,31 @@
+niklasku@DESKTOP-06PGJ5B:/mnt/d/programming/own_projects/docker/DevOpsWithKubernetes/part1/1_1$ kubectl create deployment dev-kub-xer-1-1 --image=niklasku/dev_kub_1_1
+deployment.apps/dev-kub-xer-1-1 created
+
+niklasku@DESKTOP-06PGJ5B:/mnt/d/programming/own_projects/docker/DevOpsWithKubernetes/part1/1_1$ kubectl get deployments
+NAME              READY   UP-TO-DATE   AVAILABLE   AGE
+dev-kub-xer-1-1   1/1     1            1           5m15s
+
+niklasku@DESKTOP-06PGJ5B:/mnt/d/programming/own_projects/docker/DevOpsWithKubernetes/part1/1_1$ kubectl get pods
+NAME                               READY   STATUS    RESTARTS   AGE
+dev-kub-xer-1-1-6bcdbc49d5-88hdx   1/1     Running   0          5m23s
+
+niklasku@DESKTOP-06PGJ5B:/mnt/d/programming/own_projects/docker/DevOpsWithKubernetes/part1/1_1$ kubectl logs -f dev-kub-xer-1-1-6bcdbc49d5-88hdx dev-kub-1-1-zrm6z 
+2021-04-27T10:37:09.962Z: f6395baa-0abc-4f09-93a0-f2274b8a1625
+2021-04-27T10:37:14.962Z: f6395baa-0abc-4f09-93a0-f2274b8a1625
+2021-04-27T10:37:19.962Z: f6395baa-0abc-4f09-93a0-f2274b8a1625
+2021-04-27T10:37:24.962Z: f6395baa-0abc-4f09-93a0-f2274b8a1625
+2021-04-27T10:37:29.962Z: f6395baa-0abc-4f09-93a0-f2274b8a1625
+2021-04-27T10:37:34.962Z: f6395baa-0abc-4f09-93a0-f2274b8a1625
+2021-04-27T10:37:39.962Z: f6395baa-0abc-4f09-93a0-f2274b8a1625
+2021-04-27T10:37:44.962Z: f6395baa-0abc-4f09-93a0-f2274b8a1625
+2021-04-27T10:37:49.962Z: f6395baa-0abc-4f09-93a0-f2274b8a1625
+2021-04-27T10:37:54.962Z: f6395baa-0abc-4f09-93a0-f2274b8a1625
+2021-04-27T10:37:59.962Z: f6395baa-0abc-4f09-93a0-f2274b8a1625
+2021-04-27T10:38:04.962Z: f6395baa-0abc-4f09-93a0-f2274b8a1625
+2021-04-27T10:38:09.962Z: f6395baa-0abc-4f09-93a0-f2274b8a1625
+2021-04-27T10:38:14.962Z: f6395baa-0abc-4f09-93a0-f2274b8a1625
+2021-04-27T10:38:19.962Z: f6395baa-0abc-4f09-93a0-f2274b8a1625
+2021-04-27T10:38:24.962Z: f6395baa-0abc-4f09-93a0-f2274b8a1625
+2021-04-27T10:38:29.962Z: f6395baa-0abc-4f09-93a0-f2274b8a1625
+2021-04-27T10:38:34.962Z: f6395baa-0abc-4f09-93a0-f2274b8a1625
+2021-04-27T10:38:39.962Z: f6395baa-0abc-4f09-93a0-f2274b8a1625
