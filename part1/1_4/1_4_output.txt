@@ -1,0 +1,10 @@
+niklasku@DESKTOP-06PGJ5B:/mnt/d/programming/own_projects/docker/DevOpsWithKubernetes/part1/1_4/todoapp$ kubectl apply -f manifests/deployment.yaml 
+deployment.apps/dev-kub-todolist created
+
+niklasku@DESKTOP-06PGJ5B:/mnt/d/programming/own_projects/docker/DevOpsWithKubernetes/part1/1_4/todoapp$ kubectl get deployments.apps 
+NAME               READY   UP-TO-DATE   AVAILABLE   AGE
+dev-kub-todolist   1/1     1            1           2m30s
+
+niklasku@DESKTOP-06PGJ5B:/mnt/d/programming/own_projects/docker/DevOpsWithKubernetes/part1/1_4/todoapp$ kubectl get pods
+NAME                                    READY   STATUS        RESTARTS   AGE
+dev-kub-todolist-784c888649-c5btv       1/1     Running       0          2m53s
