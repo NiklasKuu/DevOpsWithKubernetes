@@ -1,0 +1,17 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dev-kub-main-app-dep
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: dev-kub-main-app
+  template:
+    metadata:
+      labels:
+        app: dev-kub-main-app
+    spec:
+      containers:
+        - name: dev-kub-main-app
+          image: niklasku/dev_kub_main_app:1_3

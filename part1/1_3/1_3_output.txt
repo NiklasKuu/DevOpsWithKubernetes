@@ -1,0 +1,21 @@
+niklasku@DESKTOP-06PGJ5B:/mnt/d/programming/own_projects/docker/DevOpsWithKubernetes/part1/1_3$ kubectl apply -f manifests/deployment.yaml
+deployment.apps/dev-kub-main-app-dep created
+
+niklasku@DESKTOP-06PGJ5B:/mnt/d/programming/own_projects/docker/DevOpsWithKubernetes/part1/1_3$ kubectl get deployments.apps 
+NAME                   READY   UP-TO-DATE   AVAILABLE   AGE
+dev-kub-main-app-dep   1/1     1            1           12s
+
+niklasku@DESKTOP-06PGJ5B:/mnt/d/programming/own_projects/docker/DevOpsWithKubernetes/part1/1_3$ kubectl get pods§
+error: the server doesn't have a resource type "pods§"
+
+niklasku@DESKTOP-06PGJ5B:/mnt/d/programming/own_projects/docker/DevOpsWithKubernetes/part1/1_3$ kubectl get pods
+NAME                                    READY   STATUS    RESTARTS   AGE
+dev-kub-main-app-dep-66875959d4-ljjl9   1/1     Running   0          25s
+
+niklasku@DESKTOP-06PGJ5B:/mnt/d/programming/own_projects/docker/DevOpsWithKubernetes/part1/1_3$ kubectl logs -f dev-kub-main-app-dep-66875959d4-ljjl9 
+2021-04-28T15:57:37.426Z: 446fa202-ed5f-4361-ac7b-b6f8599a4f09
+2021-04-28T15:57:42.426Z: 446fa202-ed5f-4361-ac7b-b6f8599a4f09
+2021-04-28T15:57:47.426Z: 446fa202-ed5f-4361-ac7b-b6f8599a4f09
+2021-04-28T15:57:52.426Z: 446fa202-ed5f-4361-ac7b-b6f8599a4f09
+2021-04-28T15:57:57.426Z: 446fa202-ed5f-4361-ac7b-b6f8599a4f09
+2021-04-28T15:58:02.426Z: 446fa202-ed5f-4361-ac7b-b6f8599a4f09
