@@ -1,0 +1,7 @@
+niklasku@DESKTOP-06PGJ5B:/mnt/d/programming/own_projects/docker/DevOpsWithKubernetes/part1/1_5/todoapp$ kubectl apply -f manifests/deployment.yaml 
+deployment.apps/dev-kub-todolist created
+
+niklasku@DESKTOP-06PGJ5B:/mnt/d/programming/own_projects/docker/DevOpsWithKubernetes/part1/1_5/todoapp$ kubectl port-forward dev-kub-todolist-5cb49cb74b-v794z 3000:3000        
+Forwarding from 127.0.0.1:3000 -> 3000
+Forwarding from [::1]:3000 -> 3000
+Handling connection for 3000
