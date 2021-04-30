@@ -1,0 +1,45 @@
+Niklas Kuusisto@DESKTOP-06PGJ5B MINGW64 /d/programming/own_projects/docker/DevOpsWithKubernetes/etes/part1/1_7 (master)
+$ kubectl apply -f manifests/deployment.yaml 
+deployment.apps/dev-kub-main-app-dep created
+
+Niklas Kuusisto@DESKTOP-06PGJ5B MINGW64 /d/programming/own_projects/docker/DevOpsWithKubernetes/part1/1_7 (master)
+$ kubectl apply -f manifests/service.yaml 
+service/dev-kub-main-app-svc created
+
+Niklas Kuusisto@DESKTOP-06PGJ5B MINGW64 /d/programming/own_projects/docker/DevOpsWithKubernetes/part1/1_7 (master)
+$ kubectl apply -f manifests/ingress.yaml 
+Warning: extensions/v1beta1 Ingress is deprecated in v1.14+, unavailable in v1.22+; use networking.k8s.io/v1 Ingress
+ingress.extensions/dev-kub-main-app-ingress created
+
+Niklas Kuusisto@DESKTOP-06PGJ5B MINGW64 /d/programming/own_projects/docker/DevOpsWithKubernetes/part1/1_7 (master)
+$ kubectl get deployments.apps 
+NAME                   READY   UP-TO-DATE   AVAILABLE   AGE
+dev-kub-main-app-dep   1/1     1            1           54s
+
+Niklas Kuusisto@DESKTOP-06PGJ5B MINGW64 /d/programming/own_projects/docker/DevOpsWithKubernetes/part1/1_7 (master)
+$ kubectl get pods
+NAME                                   READY   STATUS    RESTARTS   AGE
+dev-kub-main-app-dep-9997ccddd-8f5s9   1/1     Running   0          70s
+
+Niklas Kuusisto@DESKTOP-06PGJ5B MINGW64 /d/programming/own_projects/docker/DevOpsWithKubernetes/part1/1_7 (master)
+$ kubectl logs -f dev-kub-main-app-dep-9997ccddd-8f5s9
+Example app listening at http://localhost:3000
+2021-04-30T20:47:11.608Z: fcf1305f-c2ff-4f22-8310-6205f9c5fdba
+2021-04-30T20:47:16.609Z: fcf1305f-c2ff-4f22-8310-6205f9c5fdba
+2021-04-30T20:47:21.609Z: fcf1305f-c2ff-4f22-8310-6205f9c5fdba
+2021-04-30T20:47:26.614Z: fcf1305f-c2ff-4f22-8310-6205f9c5fdba
+2021-04-30T20:47:31.619Z: fcf1305f-c2ff-4f22-8310-6205f9c5fdba
+2021-04-30T20:47:36.620Z: fcf1305f-c2ff-4f22-8310-6205f9c5fdba
+2021-04-30T20:47:41.623Z: fcf1305f-c2ff-4f22-8310-6205f9c5fdba
+2021-04-30T20:47:46.623Z: fcf1305f-c2ff-4f22-8310-6205f9c5fdba
+2021-04-30T20:47:51.624Z: fcf1305f-c2ff-4f22-8310-6205f9c5fdba
+2021-04-30T20:47:56.625Z: fcf1305f-c2ff-4f22-8310-6205f9c5fdba
+2021-04-30T20:48:01.630Z: fcf1305f-c2ff-4f22-8310-6205f9c5fdba
+2021-04-30T20:48:06.633Z: fcf1305f-c2ff-4f22-8310-6205f9c5fdba
+2021-04-30T20:48:11.639Z: fcf1305f-c2ff-4f22-8310-6205f9c5fdba
+2021-04-30T20:48:16.644Z: fcf1305f-c2ff-4f22-8310-6205f9c5fdba
+2021-04-30T20:48:21.648Z: fcf1305f-c2ff-4f22-8310-6205f9c5fdba
+
+Niklas Kuusisto@DESKTOP-06PGJ5B MINGW64 /d/programming/own_projects/docker/DevOpsWithKubernetes/part1/1_7 (master)
+$ curl localhost:8081
+2021-04-30T20:50:07.264Z: fcf1305f-c2ff-4f22-8310-6205f9c5fdba
