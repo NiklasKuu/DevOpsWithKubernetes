@@ -1,0 +1,24 @@
+Niklas Kuusisto@DESKTOP-06PGJ5B MINGW64 /d/programming/own_projects/docker/DevOpsWithKubernetes/part1/1_7 (master)
+$ kubectl apply -f manifests/service.yaml 
+service/dev-kub-main-app-svc created
+
+Niklas Kuusisto@DESKTOP-06PGJ5B MINGW64 /d/programming/own_projects/docker/DevOpsWithKubernetes/part1/1_7 (master)
+$ kubectl apply -f manifests/deployment.yaml
+deployment.apps/dev-kub-main-app-dep created
+
+Niklas Kuusisto@DESKTOP-06PGJ5B MINGW64 /d/programming/own_projects/docker/DevOpsWithKubernetes/part1/1_7 (master)
+$ kubectl apply -f manifests/service.yaml 
+service/dev-kub-main-app-svc created
+
+Niklas Kuusisto@DESKTOP-06PGJ5B MINGW64 /d/programming/own_projects/docker/DevOpsWithKubernetes/part1/1_7 (master)
+$ kubectl apply -f ../1_9/manifests/deployment.yaml
+deployment.apps/dev-kub-pingpong created
+
+Niklas Kuusisto@DESKTOP-06PGJ5B MINGW64 /d/programming/own_projects/docker/DevOpsWithKubernetes/part1/1_7 (master)
+$ kubectl apply -f ../1_9/manifests/service.yaml
+service/dev-kub-pingpong-svc created
+
+Niklas Kuusisto@DESKTOP-06PGJ5B MINGW64 /d/programming/own_projects/docker/DevOpsWithKubernetes/part1/1_7 (master)
+$ kubectl apply -f ../1_9/manifests/ingress.yaml
+Warning: extensions/v1beta1 Ingress is deprecated in v1.14+, unavailable in v1.22+; use networking.k8s.io/v1 Ingress
+ingress.extensions/dev-kub-pingpong-ingress created
