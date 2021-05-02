@@ -1,0 +1,12 @@
+Niklas Kuusisto@DESKTOP-06PGJ5B MINGW64 /d/programming/own_projects/docker/DevOpsWithKubernetes/part1/1_8/todoapp (master)
+$ kubectl apply -f manifests/deployment.yaml 
+deployment.apps/dev-kub-todolist created
+
+Niklas Kuusisto@DESKTOP-06PGJ5B MINGW64 /d/programming/own_projects/docker/DevOpsWithKubernetes/part1/1_8/todoapp (master)
+$ kubectl apply -f manifests/service.yaml 
+service/dev-kub-todolist-svc created
+
+Niklas Kuusisto@DESKTOP-06PGJ5B MINGW64 /d/programming/own_projects/docker/DevOpsWithKubernetes/part1/1_8/todoapp (master)
+$ kubectl apply -f manifests/ingress.yaml 
+Warning: extensions/v1beta1 Ingress is deprecated in v1.14+, unavailable in v1.22+; use networking.k8s.io/v1 Ingress
+ingress.extensions/dev-kub-todolist-ingress created
