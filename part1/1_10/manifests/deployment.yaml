@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dev-kub-main-app-1-10-dep
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: dev-kub-main-app-1-10
+  template:
+    metadata:
+      labels:
+        app: dev-kub-main-app-1-10
+    spec:
+      volumes: # Define volume
+        - name: shared-image
+          emptyDir: {}
+      containers:
+        - name: reader
+          image: niklasku/dev_kub_main_app:1_10_reader
+          volumeMounts: # Mount volume
+          - name: shared-image
+            mountPath: /app/mainapp/data
+        - name: saver
+          image: niklasku/dev_kub_main_app:1_10_saver
+          volumeMounts: # Mount volume
+          - name: shared-image
+            mountPath: /app/mainapp/data
