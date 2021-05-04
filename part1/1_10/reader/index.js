@@ -7,7 +7,7 @@ const port = 3000
 
 app.get('/', (req, res) => {
 
-  fs.readFile('./data/timestamps.txt', function (err, data) {
+  fs.readFile('./data/pongs.txt', function (err, data) {
     if (err) throw err;
     res.send(data.toString());
   })

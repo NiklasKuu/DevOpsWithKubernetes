@@ -1,0 +1,20 @@
+Niklas Kuusisto@DESKTOP-06PGJ5B MINGW64 /d/programming/own_projects/docker/DevOpsWithKubernetes/part1/1_11 (master)
+$ kubectl apply -f manifests/persistentvolume.yaml
+persistentvolume/main-app-pv configured
+
+Niklas Kuusisto@DESKTOP-06PGJ5B MINGW64 /d/programming/own_projects/docker/DevOpsWithKubernetes/part1/1_11 (master)
+$ kubectl apply -f manifests/persistentvolumeclaim.yaml
+persistentvolumeclaim/main-app-1-11-claim created
+
+Niklas Kuusisto@DESKTOP-06PGJ5B MINGW64 /d/programming/own_projects/docker/DevOpsWithKubernetes/part1/1_11 (master)
+$ kubectl apply -f manifests/deployment.yaml
+deployment.apps/dev-kub-main-app-1-11-dep created
+
+Niklas Kuusisto@DESKTOP-06PGJ5B MINGW64 /d/programming/own_projects/docker/DevOpsWithKubernetes/part1/1_11 (master)
+$ kubectl apply -f manifests/service.yaml
+service/dev-kub-main-app-1-11-svc created
+
+Niklas Kuusisto@DESKTOP-06PGJ5B MINGW64 /d/programming/own_projects/docker/DevOpsWithKubernetes/part1/1_11 (master)
+$ kubectl apply -f manifests/ingress.yaml
+Warning: extensions/v1beta1 Ingress is deprecated in v1.14+, unavailable in v1.22+; use networking.k8s.io/v1 Ingress
+ingress.extensions/dev-kub-main-app-1-11 created

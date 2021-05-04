@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dev-kub-main-app-1-11-dep
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: dev-kub-main-app-1-11
+  template:
+    metadata:
+      labels:
+        app: dev-kub-main-app-1-11
+    spec:
+      volumes: # Define volume
+        - name: shared-image
+          persistentVolumeClaim:
+            claimName: main-app-1-11-claim
+      containers:
+        - name: main-app
+          image: niklasku/dev_kub_main_app:1_11_3
+          volumeMounts: # Mount volume
+          - name: shared-image
+            mountPath: /app/mainapp/data
+        - name: pingpong
+          image: niklasku/dev_kub_pingpong:1_11_3
+          volumeMounts: # Mount volume
+          - name: shared-image
+            mountPath: /app/mainapp/data
