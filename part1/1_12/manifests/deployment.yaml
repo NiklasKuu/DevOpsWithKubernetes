@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dev-kub-todolist-1-12-dep
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: dev-kub-todolist-1-12
+  template:
+    metadata:
+      labels:
+        app: dev-kub-todolist-1-12
+    spec:
+      volumes: # Define volume
+        - name: shared-image
+          persistentVolumeClaim:
+            claimName: dev-kub-todolist-1-12-claim
+      containers:
+        - name: todolist
+          image: niklasku/dev_kub_todolist:1_12
+          volumeMounts: # Mount volume
+          - name: shared-image
+            mountPath: /app/todoapp/public/images
