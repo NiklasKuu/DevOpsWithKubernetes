@@ -1,0 +1,13 @@
+extends layout
+
+block content
+  h1= title
+  p Welcome to #{title}
+  img(src=imageUrl)
+  form(action="/addTodo", method="get")
+    label(for="todoName")
+    input(type="text", name="todoName", maxlength="140")
+    input(type="submit", value="Create TODO")  
+  ul
+    each val in todos
+      li= val
