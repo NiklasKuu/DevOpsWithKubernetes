@@ -1,0 +1,17 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dev-kub-pingpong-2-1-dep
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: dev-kub-pingpong-2-1
+  template:
+    metadata:
+      labels:
+        app: dev-kub-pingpong-2-1
+    spec:
+      containers:
+        - name: main-app
+          image: niklasku/dev_kub_pingpong:2_1_4
