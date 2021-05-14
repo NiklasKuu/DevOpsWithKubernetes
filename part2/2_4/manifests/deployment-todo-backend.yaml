@@ -1,0 +1,18 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: todo-application
+  name: dev-kub-todolist-backend-2-4-dep
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: dev-kub-todolist-backend-2-4
+  template:
+    metadata:
+      labels:
+        app: dev-kub-todolist-backend-2-4
+    spec:
+      containers:
+        - name: todolist
+          image: niklasku/dev_kub_todolist_backend:2_2_2

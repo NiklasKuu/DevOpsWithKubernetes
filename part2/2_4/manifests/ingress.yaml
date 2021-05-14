@@ -1,0 +1,19 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  namespace: todo-application
+  name: dev-kub-todolist-2-4-ingress
+  annotations:
+    traefik.ingress.kubernetes.io/rule-type: "PathPrefixStrip"
+spec:
+  rules:
+  - http:
+      paths:
+      - path: /
+        backend:
+          serviceName: dev-kub-todo-list-scv
+          servicePort: 2345
+      - path: /backend
+        backend:
+          serviceName: todo-backend
+          servicePort: 3001
