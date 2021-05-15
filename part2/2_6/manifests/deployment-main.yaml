@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: main-application
+  name: dev-kub-main-app-2-6-dep
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: dev-kub-main-app-2-6
+  template:
+    metadata:
+      labels:
+        app: dev-kub-main-app-2-6
+    spec:
+      containers:
+        - name: main-app
+          image: niklasku/dev_kub_main_app:2_6
+          volumeMounts:
+          - name: foo
+            mountPath: /app/mainapp/.env
+            subPath: .env
+            readOnly: true
+      volumes:
+        - name: foo
+          configMap:
+            name: main-app-configmap
