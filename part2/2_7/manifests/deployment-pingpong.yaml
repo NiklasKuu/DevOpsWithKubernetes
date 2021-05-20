@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: main-application
+  name: pingpong-dep
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: pingpong
+  template:
+    metadata:
+      labels:
+        app: pingpong
+    spec:
+      containers:
+        - name: main-app
+          image: niklasku/dev_kub_pingpong:2_7_6
+          volumeMounts:
+          - name: foo
+            mountPath: /app/mainapp/.env
+            subPath: .env
+            readOnly: true
+          env:
+          - name: DB_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: postgres-password
+                key: DB_PASSWORD
+      volumes:
+        - name: foo
+          configMap:
+            name: main-app-configmap
