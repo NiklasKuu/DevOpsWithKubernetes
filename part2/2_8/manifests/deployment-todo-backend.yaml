@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: todo-application
+  name: todolist-backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: todolist-backend
+  template:
+    metadata:
+      labels:
+        app: todolist-backend
+    spec:
+      containers:
+        - name: todolist-backend
+          image: niklasku/dev_kub_todolist_backend:2_8_2
+          volumeMounts:
+          - name: config-mount
+            mountPath: /app/todoapp-backend/.env
+            subPath: .env
+            readOnly: true
+          env:
+          - name: DB_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: postgres-password
+                key: DB_PASSWORD
+      volumes:
+        - name: config-mount
+          configMap:
+            name: todo-app-configmap
