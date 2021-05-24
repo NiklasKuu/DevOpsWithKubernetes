@@ -1,0 +1,15 @@
+{
+  "name": "cron-job",
+  "version": "1.0.0",
+  "description": "a cron job script for exercise 2_9 of devOpsWithKubernetes",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Niklas Kuusisto",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "dotenv": "^10.0.0"
+  }
+}

@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  namespace: todo-application
+  name: cronjob-config
+  labels:
+    app: daily-todos
+data:
+  TODO_URL: todo-backend-scv
+  TODO_PORT: "3001"

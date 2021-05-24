@@ -1,0 +1,19 @@
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  namespace: todo-application
+  name: daily-todos
+spec:
+  schedule: "0 0 * * *"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+          - name: daily-todos-job
+            image: niklasku/dev_kub_cronjob:2_9_4
+            imagePullPolicy: IfNotPresent
+            envFrom:
+            - configMapRef:
+                name: cronjob-config
+          restartPolicy: OnFailure
