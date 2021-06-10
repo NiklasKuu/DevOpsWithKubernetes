@@ -23,6 +23,8 @@ jobs:
 
     - name: Create image name and tag
       run: echo "::set-env name=IMAGE_WITH_TAG::gcr.io/${{ secrets.GKE_PROJECT }}/$IMAGE:${GITHUB_REF#refs/heads/}-$GITHUB_SHA"
+      env:
+        ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
 
     - name: Build
       run: docker build ./pipeline_test --tag "$IMAGE_WITH_TAG" .
