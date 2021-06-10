@@ -40,6 +40,6 @@ jobs:
 
     - name: Deploy
       run: |-
-        ./kustomize edit set image PROJECT/IMAGE=$IMAGE_WITH_TAG
+        ./pipeline_test/kustomize edit set image PROJECT/IMAGE=$IMAGE_WITH_TAG
         kubectl apply -k ./pipeline_test
         kubectl rollout status deployment $IMAGE
