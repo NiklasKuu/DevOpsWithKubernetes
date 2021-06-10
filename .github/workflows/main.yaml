@@ -27,7 +27,7 @@ jobs:
         ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
 
     - name: Build
-      run: docker build ./pipeline_test --tag "$IMAGE_WITH_TAG" .
+      run: docker build --tag "$IMAGE_WITH_TAG" ./pipeline_test
 
     - name: Publish
       run: docker push "$IMAGE_WITH_TAG"
