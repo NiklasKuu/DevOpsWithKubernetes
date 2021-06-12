@@ -1,0 +1,59 @@
+name: Release Project
+
+on:
+  push:
+env:
+  GKE_CLUSTER: dwk-cluster
+  GKE_ZONE: europe-north1-b
+  FRONT_IMAGE: dev_kub_todolist
+  BACK_IMAGE: dev_kub_todolist_backend
+jobs:
+  build-publish-deploy-project:
+    name: Build, Publish and Deploy Project
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+    - uses: GoogleCloudPlatform/github-actions/setup-gcloud@master
+      with:
+        service_account_key: ${{ secrets.GKE_SA_KEY }}
+        project_id: ${{ secrets.GKE_PROJECT }}
+    - run: gcloud --quiet auth configure-docker
+    - run: gcloud container clusters get-credentials "$GKE_CLUSTER" --zone "$GKE_ZONE"
+
+    - name: Create front-end image name and tag
+      run: echo "::set-env name=FRONT_IMAGE_WITH_TAG::gcr.io/${{ secrets.GKE_PROJECT }}/$FRONT_IMAGE:${GITHUB_REF#refs/heads/}-$GITHUB_SHA"
+      env:
+        ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
+
+    - name: Create back-end image name and tag
+      run: echo "::set-env name=BACK_IMAGE_WITH_TAG::gcr.io/${{ secrets.GKE_PROJECT }}/$BACK_IMAGE:${GITHUB_REF#refs/heads/}-$GITHUB_SHA"
+      env:
+        ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
+
+    - name: Build Front-end
+      run: docker build --tag "$FRONT_IMAGE_WITH_TAG" ./part2/2_2/todoapp
+
+    - name: Build Back-end
+      run: docker build --tag "$BACK_IMAGE_WITH_TAG" ./part3/3_3/todoapp_backend
+
+    - name: Publish Front-end
+      run: docker push "$FRONT_IMAGE_WITH_TAG"
+    - name: Publish Back-end
+      run: docker push "$BACK_IMAGE_WITH_TAG"
+
+    - name: Set up Kustomize
+      run: |-
+        curl -sfLo kustomize https://github.com/kubernetes-sigs/kustomize/releases/download/v3.1.0/kustomize_3.1.0_linux_amd64
+        chmod u+x ./kustomize
+        cp kustomize part3/3_3/
+
+    - name: Deploy
+      run: |-
+        cd /part3/3_3/
+        ./kustomize edit set image BACK_IMAGE=$IMAGE_WITH_TAG
+        ./kustomize edit set image FRONT_IMAGE=$IMAGE_WITH_TAG
+        kubectl apply -k .
+        kubectl rollout status deployment $FRONT_IMAGE
+        kubectl rollout status deployment $BACK_IMAGE
