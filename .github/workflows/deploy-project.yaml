@@ -52,8 +52,8 @@ jobs:
     - name: Deploy
       run: |-
         cd part3/3_3/
-        ./kustomize edit set image BACK_IMAGE=$IMAGE_WITH_TAG
-        ./kustomize edit set image FRONT_IMAGE=$IMAGE_WITH_TAG
+        ./kustomize edit set image FRONT_IMAGE=$FRONT_IMAGE_WITH_TAG
+        ./kustomize edit set image BACK_IMAGE=$BACK_IMAGE_WITH_TAG
         kubectl apply -k .
         kubectl rollout status deployment $FRONT_IMAGE
         kubectl rollout status deployment $BACK_IMAGE
