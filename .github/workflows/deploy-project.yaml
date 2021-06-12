@@ -51,7 +51,7 @@ jobs:
 
     - name: Deploy
       run: |-
-        cd /part3/3_3/
+        cd part3/3_3/
         ./kustomize edit set image BACK_IMAGE=$IMAGE_WITH_TAG
         ./kustomize edit set image FRONT_IMAGE=$IMAGE_WITH_TAG
         kubectl apply -k .
