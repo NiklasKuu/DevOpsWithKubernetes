@@ -119,6 +119,10 @@ app.get('/backend/imageName', cors(), async (req, res, next) => {
 app.get('/', (req,res) => {
   res.status(200).send();
 })
+//for some reason this needs to be here, otherwise ingress wont allow requests to the backend, because it thinks its down
+app.get('/backend', (req,res) => {
+  res.status(200).send();
+})
 
 
 // error handler
