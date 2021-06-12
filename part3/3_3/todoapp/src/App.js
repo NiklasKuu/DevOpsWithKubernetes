@@ -8,7 +8,7 @@ function App() {
   const [imageName, setImageName] = useState('');
   const [todoNameState, setTodoNameState] = useState('');
   const [todos, setTodos] = useState([]);
-  const backendurl = window.location.href + '/backend'
+  const backendurl = window.location.href + 'backend'
   const getImageName = async () => {
     const axiosResponse = await axios({
       url: `${backendurl}/imageName`,
