@@ -7,11 +7,11 @@ spec:
   rules:
   - http:
       paths:
-      - path: /
+      - path: /*
         backend:
           serviceName: todolist-scv
           servicePort: 2345
-      - path: /backend
+      - path: /backend/*
         backend:
           serviceName: todo-backend-scv
           servicePort: 3001

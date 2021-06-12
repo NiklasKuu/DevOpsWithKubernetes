@@ -60,7 +60,7 @@ testDbConnection(sequelize).then(async () => {
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(express.static(path.join(__dirname, 'public')));
+app.use('/backend/static',express.static(path.join(__dirname, 'public')));
 app.use(cors())
 
 const getImagePath = (currentDate) => {

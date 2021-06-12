@@ -33,7 +33,7 @@ jobs:
         ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
 
     - name: Build Front-end
-      run: docker build --tag "$FRONT_IMAGE_WITH_TAG" ./part2/2_2/todoapp
+      run: docker build --tag "$FRONT_IMAGE_WITH_TAG" ./part3/3_3/todoapp
 
     - name: Build Back-end
       run: docker build --tag "$BACK_IMAGE_WITH_TAG" ./part3/3_3/todoapp_backend
