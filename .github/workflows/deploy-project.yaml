@@ -5,8 +5,8 @@ on:
 env:
   GKE_CLUSTER: dwk-cluster
   GKE_ZONE: europe-north1-b
-  FRONT_IMAGE: dev_kub_todolist
-  BACK_IMAGE: dev_kub_todolist_backend
+  FRONT_IMAGE: dev-kub-todolist
+  BACK_IMAGE: dev-kub-todolist-backend
 jobs:
   build-publish-deploy-project:
     name: Build, Publish and Deploy Project
