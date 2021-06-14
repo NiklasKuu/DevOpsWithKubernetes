@@ -47,7 +47,7 @@ jobs:
       run: |-
         curl -sfLo kustomize https://github.com/kubernetes-sigs/kustomize/releases/download/v3.1.0/kustomize_3.1.0_linux_amd64
         chmod u+x ./kustomize
-        cp kustomize part3/3_7/
+        cp kustomize part3/3_8/
 
     - name: Deploy
       run: |-
