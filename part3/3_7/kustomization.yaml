@@ -3,8 +3,6 @@ kind: Kustomization
 resources:
 - manifests/todoapp-namespace.yaml
 - manifests/configmap.yaml
-- manifests/deployment-todo-backend.yaml
-- manifests/deployment-todo.yaml
 - manifests/ingress.yaml
 - manifests/postgres-config.yaml
 - manifests/postgres-password-sealed-secret.yaml
@@ -12,6 +10,8 @@ resources:
 - manifests/postgres-stateful-set.yaml
 - manifests/service-todo-backend.yaml
 - manifests/service-todo.yaml
+- manifests/deployment-todo-backend.yaml
+- manifests/deployment-todo.yaml
 images:
 - name: FRONT_IMAGE
   newName: niklasku/dev_kub_todolist
