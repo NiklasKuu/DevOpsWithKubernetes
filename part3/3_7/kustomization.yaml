@@ -6,8 +6,6 @@ resources:
 - manifests/deployment-todo-backend.yaml
 - manifests/deployment-todo.yaml
 - manifests/ingress.yaml
-- manifests/persistentvolumeclaim.yaml
-- manifests/persistentvolume.yaml
 - manifests/postgres-config.yaml
 - manifests/postgres-password-sealed-secret.yaml
 - manifests/postgres-service.yaml
