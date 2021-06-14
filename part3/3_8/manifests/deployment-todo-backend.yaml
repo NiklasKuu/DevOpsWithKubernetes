@@ -29,8 +29,8 @@ spec:
                 key: DB_PASSWORD
           resources:
             limits:
-              cpu: "150m"
-              memory: "400Mi"
+              cpu: "500m"
+              memory: "1Gi"
       volumes:
         - name: config-mount
           configMap:

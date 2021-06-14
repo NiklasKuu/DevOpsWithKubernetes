@@ -18,5 +18,5 @@ spec:
           image: FRONT_IMAGE
           resources:
             limits:
-              cpu: "150m"
-              memory: "400Mi"
+              cpu: "500m"
+              memory: "1Gi"
