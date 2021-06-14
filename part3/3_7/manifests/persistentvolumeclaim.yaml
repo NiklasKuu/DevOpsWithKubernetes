@@ -4,7 +4,6 @@ metadata:
   namespace: todo-application
   name: todolist-claim
 spec:
-  storageClassName: manual
   accessModes:
     - ReadWriteMany
   resources:
