@@ -26,8 +26,8 @@ const db_todo = sequelize.define('todo', {
 
 // db_connection authentication function
 const testDbConnection = async(db_instance) => {
-  const MAXRETRY = 5; // how many times to retry connection before throwing error
-  const TIME_BETWEEN_RETRY = 1000; // how long to wait after connection failure
+  const MAXRETRY = 10; // how many times to retry connection before throwing error
+  const TIME_BETWEEN_RETRY = 5000; // how long to wait after connection failure
 
   let retry_count = 0;
   let connection_success = false;
