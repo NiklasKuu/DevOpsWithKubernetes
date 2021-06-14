@@ -51,7 +51,7 @@ jobs:
 
     - name: Deploy
       run: |-
-        cd part3/3_7/
+        cd part3/3_8/
         kubectl create namespace ${GITHUB_REF#refs/heads/} || true
         kubectl config set-context --current --namespace=${GITHUB_REF#refs/heads/}
         ./kustomize edit set namespace ${GITHUB_REF#refs/heads/}

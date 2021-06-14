@@ -1,0 +1,21 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+- manifests/todoapp-namespace.yaml
+- manifests/configmap.yaml
+- manifests/ingress.yaml
+- manifests/postgres-config.yaml
+- manifests/postgres-password-sealed-secret.yaml
+- manifests/postgres-service.yaml
+- manifests/postgres-stateful-set.yaml
+- manifests/service-todo-backend.yaml
+- manifests/service-todo.yaml
+- manifests/deployment-todo-backend.yaml
+- manifests/deployment-todo.yaml
+images:
+- name: FRONT_IMAGE
+  newName: niklasku/dev_kub_todolist
+  newTag: '2_2_4'
+- name: BACK_IMAGE
+  newName: niklasku/dev_kub_todolist_backend
+  newTag: '2_10_1'
