@@ -1,0 +1,1 @@
+I chose to do a persistentvolumeclaim, as that seemd to be easer to setup/delete as I delete the cluster often

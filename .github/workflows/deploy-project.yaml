@@ -47,11 +47,11 @@ jobs:
       run: |-
         curl -sfLo kustomize https://github.com/kubernetes-sigs/kustomize/releases/download/v3.1.0/kustomize_3.1.0_linux_amd64
         chmod u+x ./kustomize
-        cp kustomize part3/3_3/
+        cp kustomize part3/3_7/
 
     - name: Deploy
       run: |-
-        cd part3/3_3/
+        cd part3/3_7/
         kubectl create namespace ${GITHUB_REF#refs/heads/} || true
         kubectl config set-context --current --namespace=${GITHUB_REF#refs/heads/}
         ./kustomize edit set namespace ${GITHUB_REF#refs/heads/}
