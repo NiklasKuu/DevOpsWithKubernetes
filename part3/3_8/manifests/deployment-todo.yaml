@@ -16,7 +16,3 @@ spec:
       containers:
         - name: todolist
           image: FRONT_IMAGE
-          resources:
-            limits:
-              cpu: "500m"
-              memory: "1Gi"

@@ -27,10 +27,6 @@ spec:
               secretKeyRef:
                 name: postgres-password
                 key: DB_PASSWORD
-          resources:
-            limits:
-              cpu: "500m"
-              memory: "1Gi"
       volumes:
         - name: config-mount
           configMap:
