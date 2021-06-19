@@ -1,0 +1,14 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+- manifests/configmap.yaml
+- manifests/deployment-main.yaml
+- manifests/deployment-pingpong.yaml
+- manifests/ingress.yaml
+- manifests/mainapp-namespace.yaml
+- manifests/postgres-config.yaml
+- manifests/postgres-password-sealed-secret.yaml
+- manifests/postgres-stateful-set.yaml
+- manifests/postgres-service.yaml
+- manifests/service-main.yaml
+- manifests/service-pingpong.yaml

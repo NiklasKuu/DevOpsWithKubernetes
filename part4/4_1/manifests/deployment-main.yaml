@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: main-application
+  name: main-app-dep
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: main-app
+  template:
+    metadata:
+      labels:
+        app: main-app
+    spec:
+      containers:
+        - name: main-app
+          image: niklasku/dev_kub_main_app:4_1_1
+          volumeMounts:
+          - name: foo
+            mountPath: /app/mainapp/.env
+            subPath: .env
+            readOnly: true
+          resources:
+            limits:
+              cpu: "150m"
+              memory: "100Mi"
+          readinessProbe:
+            initialDelaySeconds: 10 # Initial delay until the readiness is tested
+            periodSeconds: 5 # How often to test
+            httpGet:
+               path: /
+               port: 3000
+      volumes:
+        - name: foo
+          configMap:
+            name: main-app-configmap
