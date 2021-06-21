@@ -1,0 +1,49 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: todo-application
+  name: todolist-backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: todolist-backend
+  template:
+    metadata:
+      labels:
+        app: todolist-backend
+    spec:
+      containers:
+        - name: todolist-backend
+          image: BACK_IMAGE
+          volumeMounts:
+          - name: config-mount
+            mountPath: /app/todoapp-backend/.env
+            subPath: .env
+            readOnly: true
+          env:
+          - name: DB_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: postgres-password
+                key: DB_PASSWORD
+          resources:
+            limits:
+              cpu: "150m"
+              memory: "100Mi"
+          readinessProbe:
+            initialDelaySeconds: 10 # Initial delay until the readiness is tested
+            periodSeconds: 5 # How often to test
+            httpGet:
+               path: /
+               port: 3001
+          livenessProbe:
+            initialDelaySeconds: 20 # Initial delay until the liveness is tested
+            periodSeconds: 5 # How often to test
+            httpGet:
+               path: /
+               port: 3001
+      volumes:
+        - name: config-mount
+          configMap:
+            name: todo-app-configmap

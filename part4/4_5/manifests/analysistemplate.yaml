@@ -1,0 +1,15 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AnalysisTemplate
+metadata:
+  namespace: todo-application
+  name: cpu-usage-rate
+spec:
+  metrics:
+  - name: cpu-usage-rate
+    initialDelay: 10m
+    successCondition: result < 0.27 
+    provider:
+      prometheus:
+        address: http://kube-prometheus-stack-1624-prometheus.prometheus.svc:9090 # DNS name for my Prometheus, find yours with kubectl describe svc ...
+        query: |
+          scalar(sum(rate(container_cpu_usage_seconds_total{namespace="todo-application", container=~"todolist.*"}[5m])))
