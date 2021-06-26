@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  namespace: todo-application
+  name: todo-app-configmap
+data:
+  .env: |
+    DB_NAME=postgres_db
+    DB_USER=postgres_user
+    DB_HOST_URL=postgres
+    NATS_URL=nats://my-nats.default:4222
+#    NATS_URL=demo.nats.io:4222
+
+
+    
