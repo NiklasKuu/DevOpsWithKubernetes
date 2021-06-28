@@ -16,12 +16,12 @@ resources:
 - manifests/broadcaster-secrets.yaml
 - manifests/deployment-broadcaster.yaml
 images:
-- name: FRONT_IMAGE
-  newName: niklasku/dev_kub_todolist
-  newTag: '4_5_2'
 - name: BACK_IMAGE
   newName: niklasku/dev_kub_todolist_backend
-  newTag: '4_6_19'
+  newTag: e419557a26301a327e06dfd6fa6aa89aa9c89355
 - name: BROADCASTER_IMAGE
   newName: niklasku/dev_kub_broadcaster
-  newTag: '4_6_19'
+  newTag: e419557a26301a327e06dfd6fa6aa89aa9c89355
+- name: FRONT_IMAGE
+  newName: niklasku/dev_kub_todolist
+  newTag: e419557a26301a327e06dfd6fa6aa89aa9c89355
