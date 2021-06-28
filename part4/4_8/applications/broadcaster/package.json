@@ -1,0 +1,17 @@
+{
+  "name": "broadcaster",
+  "version": "1.0.0",
+  "description": "broadcaster application for devopswithkubernetes course",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Niklas Kuusisto",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^10.0.0",
+    "minimist": "^1.2.5",
+    "nats": "^2.0.8",
+    "node-telegram-bot-api": "^0.53.0"
+  }
+}

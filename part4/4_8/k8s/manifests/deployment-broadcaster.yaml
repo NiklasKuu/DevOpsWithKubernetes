@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: todo-application
+  name: broadcaster
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: broadcaster
+  template:
+    metadata:
+      labels:
+        app: broadcaster
+    spec:
+      containers:
+        - name: broadcaster
+          image: BROADCASTER_IMAGE
+          env:
+          - name: BOT_TOKEN
+            valueFrom:
+              secretKeyRef:
+                name: broadcaster-secrets
+                key: BOT_TOKEN
+          - name: TELEGRAM_CHANNEL_ID
+            valueFrom:
+              secretKeyRef:
+                name: broadcaster-secrets
+                key: TELEGRAM_CHANNEL_ID
+          - name: NATS_URL
+            #value: demo.nats.io:4222
+            value: nats://my-nats.default:4222
+          resources:
+            limits:
+              cpu: "150m"
+              memory: "100Mi"
+
+
