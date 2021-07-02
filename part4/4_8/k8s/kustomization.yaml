@@ -18,10 +18,10 @@ resources:
 images:
 - name: BACK_IMAGE
   newName: niklasku/dev_kub_todolist_backend
-  newTag: e419557a26301a327e06dfd6fa6aa89aa9c89355
+  newTag: 01aa72b147206dd0e288f1f04f2c44e8d3178207
 - name: BROADCASTER_IMAGE
   newName: niklasku/dev_kub_broadcaster
-  newTag: e419557a26301a327e06dfd6fa6aa89aa9c89355
+  newTag: 01aa72b147206dd0e288f1f04f2c44e8d3178207
 - name: FRONT_IMAGE
   newName: niklasku/dev_kub_todolist
-  newTag: e419557a26301a327e06dfd6fa6aa89aa9c89355
+  newTag: 01aa72b147206dd0e288f1f04f2c44e8d3178207
