@@ -1,0 +1,17 @@
+{
+  "name": "dummysite-controller",
+  "version": "1.0.0",
+  "description": "dummysite CRD controller",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Niklas Kuusisto",
+  "license": "ISC",
+  "dependencies": {
+    "@kubernetes/client-node": "^0.15.0",
+    "json-stream": "^1.0.0",
+    "mustache": "^4.2.0",
+    "request": "^2.88.2"
+  }
+}
