@@ -1,0 +1,624 @@
+apiVersion: v1
+items:
+- apiVersion: apps/v1
+  kind: Deployment
+  metadata:
+    annotations:
+      deployment.kubernetes.io/revision: "1"
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"apps/v1","kind":"Deployment","metadata":{"annotations":{"kustomize.toolkit.fluxcd.io/checksum":"e113aa7757cd18f625a456837999a423e6224ed9"},"labels":{"kustomize.toolkit.fluxcd.io/name":"project-app","kustomize.toolkit.fluxcd.io/namespace":"flux-system"},"name":"todolist","namespace":"todo-application"},"spec":{"replicas":1,"selector":{"matchLabels":{"app":"todolist"}},"template":{"metadata":{"labels":{"app":"todolist"}},"spec":{"containers":[{"image":"niklasku/dev_kub_todolist:01aa72b147206dd0e288f1f04f2c44e8d3178207","livenessProbe":{"httpGet":{"path":"/","port":3000},"initialDelaySeconds":20,"periodSeconds":5},"name":"todolist","readinessProbe":{"httpGet":{"path":"/","port":3000},"initialDelaySeconds":10,"periodSeconds":5},"resources":{"limits":{"cpu":"150m","memory":"300Mi"}}}]}}}}
+      kustomize.toolkit.fluxcd.io/checksum: e113aa7757cd18f625a456837999a423e6224ed9
+    generation: 1
+    labels:
+      kustomize.toolkit.fluxcd.io/name: project-app
+      kustomize.toolkit.fluxcd.io/namespace: flux-system
+    managedFields:
+    - apiVersion: apps/v1
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:metadata:
+          f:annotations:
+            .: {}
+            f:kubectl.kubernetes.io/last-applied-configuration: {}
+            f:kustomize.toolkit.fluxcd.io/checksum: {}
+          f:labels:
+            .: {}
+            f:kustomize.toolkit.fluxcd.io/name: {}
+            f:kustomize.toolkit.fluxcd.io/namespace: {}
+        f:spec:
+          f:progressDeadlineSeconds: {}
+          f:replicas: {}
+          f:revisionHistoryLimit: {}
+          f:selector: {}
+          f:strategy:
+            f:rollingUpdate:
+              .: {}
+              f:maxSurge: {}
+              f:maxUnavailable: {}
+            f:type: {}
+          f:template:
+            f:metadata:
+              f:labels:
+                .: {}
+                f:app: {}
+            f:spec:
+              f:containers:
+                k:{"name":"todolist"}:
+                  .: {}
+                  f:image: {}
+                  f:imagePullPolicy: {}
+                  f:livenessProbe:
+                    .: {}
+                    f:failureThreshold: {}
+                    f:httpGet:
+                      .: {}
+                      f:path: {}
+                      f:port: {}
+                      f:scheme: {}
+                    f:initialDelaySeconds: {}
+                    f:periodSeconds: {}
+                    f:successThreshold: {}
+                    f:timeoutSeconds: {}
+                  f:name: {}
+                  f:readinessProbe:
+                    .: {}
+                    f:failureThreshold: {}
+                    f:httpGet:
+                      .: {}
+                      f:path: {}
+                      f:port: {}
+                      f:scheme: {}
+                    f:initialDelaySeconds: {}
+                    f:periodSeconds: {}
+                    f:successThreshold: {}
+                    f:timeoutSeconds: {}
+                  f:resources:
+                    .: {}
+                    f:limits:
+                      .: {}
+                      f:cpu: {}
+                      f:memory: {}
+                  f:terminationMessagePath: {}
+                  f:terminationMessagePolicy: {}
+              f:dnsPolicy: {}
+              f:restartPolicy: {}
+              f:schedulerName: {}
+              f:securityContext: {}
+              f:terminationGracePeriodSeconds: {}
+      manager: kustomize-controller
+      operation: Update
+      time: "2021-07-03T16:51:12Z"
+    - apiVersion: apps/v1
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:metadata:
+          f:annotations:
+            f:deployment.kubernetes.io/revision: {}
+        f:status:
+          f:availableReplicas: {}
+          f:conditions:
+            .: {}
+            k:{"type":"Available"}:
+              .: {}
+              f:lastTransitionTime: {}
+              f:lastUpdateTime: {}
+              f:message: {}
+              f:reason: {}
+              f:status: {}
+              f:type: {}
+            k:{"type":"Progressing"}:
+              .: {}
+              f:lastTransitionTime: {}
+              f:lastUpdateTime: {}
+              f:message: {}
+              f:reason: {}
+              f:status: {}
+              f:type: {}
+          f:observedGeneration: {}
+          f:readyReplicas: {}
+          f:replicas: {}
+          f:updatedReplicas: {}
+      manager: k3s
+      operation: Update
+      time: "2021-07-03T16:54:07Z"
+    name: todolist
+    namespace: todo-application
+    resourceVersion: "59882"
+    uid: bb05b8dd-9624-4ac1-9c59-c0d669a29c68
+  spec:
+    progressDeadlineSeconds: 600
+    replicas: 1
+    revisionHistoryLimit: 10
+    selector:
+      matchLabels:
+        app: todolist
+    strategy:
+      rollingUpdate:
+        maxSurge: 25%
+        maxUnavailable: 25%
+      type: RollingUpdate
+    template:
+      metadata:
+        annotations:
+          linkerd.io/inject: enabled
+        labels:
+          app: todolist
+      spec:
+        containers:
+        - image: niklasku/dev_kub_todolist:01aa72b147206dd0e288f1f04f2c44e8d3178207
+          imagePullPolicy: IfNotPresent
+          livenessProbe:
+            failureThreshold: 3
+            httpGet:
+              path: /
+              port: 3000
+              scheme: HTTP
+            initialDelaySeconds: 20
+            periodSeconds: 5
+            successThreshold: 1
+            timeoutSeconds: 1
+          name: todolist
+          readinessProbe:
+            failureThreshold: 3
+            httpGet:
+              path: /
+              port: 3000
+              scheme: HTTP
+            initialDelaySeconds: 10
+            periodSeconds: 5
+            successThreshold: 1
+            timeoutSeconds: 1
+          resources:
+            limits:
+              cpu: 150m
+              memory: 300Mi
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+  status:
+    availableReplicas: 1
+    conditions:
+    - message: Deployment has minimum availability.
+      reason: MinimumReplicasAvailable
+      status: "True"
+      type: Available
+    - message: ReplicaSet "todolist-b7d669467" has successfully progressed.
+      reason: NewReplicaSetAvailable
+      status: "True"
+      type: Progressing
+    observedGeneration: 1
+    readyReplicas: 1
+    replicas: 1
+    updatedReplicas: 1
+- apiVersion: apps/v1
+  kind: Deployment
+  metadata:
+    annotations:
+      deployment.kubernetes.io/revision: "1"
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"apps/v1","kind":"Deployment","metadata":{"annotations":{"kustomize.toolkit.fluxcd.io/checksum":"e113aa7757cd18f625a456837999a423e6224ed9"},"labels":{"kustomize.toolkit.fluxcd.io/name":"project-app","kustomize.toolkit.fluxcd.io/namespace":"flux-system"},"name":"todolist-backend","namespace":"todo-application"},"spec":{"replicas":1,"selector":{"matchLabels":{"app":"todolist-backend"}},"template":{"metadata":{"labels":{"app":"todolist-backend"}},"spec":{"containers":[{"env":[{"name":"DB_PASSWORD","valueFrom":{"secretKeyRef":{"key":"DB_PASSWORD","name":"postgres-password"}}}],"image":"niklasku/dev_kub_todolist_backend:01aa72b147206dd0e288f1f04f2c44e8d3178207","livenessProbe":{"httpGet":{"path":"/","port":3001},"initialDelaySeconds":20,"periodSeconds":5},"name":"todolist-backend","readinessProbe":{"httpGet":{"path":"/","port":3001},"initialDelaySeconds":10,"periodSeconds":5},"resources":{"limits":{"cpu":"150m","memory":"100Mi"}},"volumeMounts":[{"mountPath":"/app/todoapp-backend/.env","name":"config-mount","readOnly":true,"subPath":".env"}]}],"volumes":[{"configMap":{"name":"todo-app-configmap"},"name":"config-mount"}]}}}}
+      kustomize.toolkit.fluxcd.io/checksum: e113aa7757cd18f625a456837999a423e6224ed9
+    generation: 1
+    labels:
+      kustomize.toolkit.fluxcd.io/name: project-app
+      kustomize.toolkit.fluxcd.io/namespace: flux-system
+    managedFields:
+    - apiVersion: apps/v1
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:metadata:
+          f:annotations:
+            .: {}
+            f:kubectl.kubernetes.io/last-applied-configuration: {}
+            f:kustomize.toolkit.fluxcd.io/checksum: {}
+          f:labels:
+            .: {}
+            f:kustomize.toolkit.fluxcd.io/name: {}
+            f:kustomize.toolkit.fluxcd.io/namespace: {}
+        f:spec:
+          f:progressDeadlineSeconds: {}
+          f:replicas: {}
+          f:revisionHistoryLimit: {}
+          f:selector: {}
+          f:strategy:
+            f:rollingUpdate:
+              .: {}
+              f:maxSurge: {}
+              f:maxUnavailable: {}
+            f:type: {}
+          f:template:
+            f:metadata:
+              f:labels:
+                .: {}
+                f:app: {}
+            f:spec:
+              f:containers:
+                k:{"name":"todolist-backend"}:
+                  .: {}
+                  f:env:
+                    .: {}
+                    k:{"name":"DB_PASSWORD"}:
+                      .: {}
+                      f:name: {}
+                      f:valueFrom:
+                        .: {}
+                        f:secretKeyRef:
+                          .: {}
+                          f:key: {}
+                          f:name: {}
+                  f:image: {}
+                  f:imagePullPolicy: {}
+                  f:livenessProbe:
+                    .: {}
+                    f:failureThreshold: {}
+                    f:httpGet:
+                      .: {}
+                      f:path: {}
+                      f:port: {}
+                      f:scheme: {}
+                    f:initialDelaySeconds: {}
+                    f:periodSeconds: {}
+                    f:successThreshold: {}
+                    f:timeoutSeconds: {}
+                  f:name: {}
+                  f:readinessProbe:
+                    .: {}
+                    f:failureThreshold: {}
+                    f:httpGet:
+                      .: {}
+                      f:path: {}
+                      f:port: {}
+                      f:scheme: {}
+                    f:initialDelaySeconds: {}
+                    f:periodSeconds: {}
+                    f:successThreshold: {}
+                    f:timeoutSeconds: {}
+                  f:resources:
+                    .: {}
+                    f:limits:
+                      .: {}
+                      f:cpu: {}
+                      f:memory: {}
+                  f:terminationMessagePath: {}
+                  f:terminationMessagePolicy: {}
+                  f:volumeMounts:
+                    .: {}
+                    k:{"mountPath":"/app/todoapp-backend/.env"}:
+                      .: {}
+                      f:mountPath: {}
+                      f:name: {}
+                      f:readOnly: {}
+                      f:subPath: {}
+              f:dnsPolicy: {}
+              f:restartPolicy: {}
+              f:schedulerName: {}
+              f:securityContext: {}
+              f:terminationGracePeriodSeconds: {}
+              f:volumes:
+                .: {}
+                k:{"name":"config-mount"}:
+                  .: {}
+                  f:configMap:
+                    .: {}
+                    f:defaultMode: {}
+                    f:name: {}
+                  f:name: {}
+      manager: kustomize-controller
+      operation: Update
+      time: "2021-07-03T16:51:12Z"
+    - apiVersion: apps/v1
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:metadata:
+          f:annotations:
+            f:deployment.kubernetes.io/revision: {}
+        f:status:
+          f:availableReplicas: {}
+          f:conditions:
+            .: {}
+            k:{"type":"Available"}:
+              .: {}
+              f:lastTransitionTime: {}
+              f:lastUpdateTime: {}
+              f:message: {}
+              f:reason: {}
+              f:status: {}
+              f:type: {}
+            k:{"type":"Progressing"}:
+              .: {}
+              f:lastTransitionTime: {}
+              f:lastUpdateTime: {}
+              f:message: {}
+              f:reason: {}
+              f:status: {}
+              f:type: {}
+          f:observedGeneration: {}
+          f:readyReplicas: {}
+          f:replicas: {}
+          f:updatedReplicas: {}
+      manager: k3s
+      operation: Update
+      time: "2021-07-03T17:35:19Z"
+    name: todolist-backend
+    namespace: todo-application
+    resourceVersion: "65910"
+    uid: 0b5d6473-789d-4869-bc7e-06a16ead5745
+  spec:
+    progressDeadlineSeconds: 600
+    replicas: 1
+    revisionHistoryLimit: 10
+    selector:
+      matchLabels:
+        app: todolist-backend
+    strategy:
+      rollingUpdate:
+        maxSurge: 25%
+        maxUnavailable: 25%
+      type: RollingUpdate
+    template:
+      metadata:
+        annotations:
+          linkerd.io/inject: enabled
+        labels:
+          app: todolist-backend
+      spec:
+        containers:
+        - env:
+          - name: DB_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                key: DB_PASSWORD
+                name: postgres-password
+          image: niklasku/dev_kub_todolist_backend:01aa72b147206dd0e288f1f04f2c44e8d3178207
+          imagePullPolicy: IfNotPresent
+          livenessProbe:
+            failureThreshold: 3
+            httpGet:
+              path: /
+              port: 3001
+              scheme: HTTP
+            initialDelaySeconds: 20
+            periodSeconds: 5
+            successThreshold: 1
+            timeoutSeconds: 1
+          name: todolist-backend
+          readinessProbe:
+            failureThreshold: 3
+            httpGet:
+              path: /
+              port: 3001
+              scheme: HTTP
+            initialDelaySeconds: 10
+            periodSeconds: 5
+            successThreshold: 1
+            timeoutSeconds: 1
+          resources:
+            limits:
+              cpu: 150m
+              memory: 100Mi
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+          volumeMounts:
+          - mountPath: /app/todoapp-backend/.env
+            name: config-mount
+            readOnly: true
+            subPath: .env
+        dnsPolicy: ClusterFirst
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+        volumes:
+        - configMap:
+            defaultMode: 420
+            name: todo-app-configmap
+          name: config-mount
+  status:
+    availableReplicas: 1
+    conditions:
+    - message: Deployment has minimum availability.
+      reason: MinimumReplicasAvailable
+      status: "True"
+      type: Available
+    - message: ReplicaSet "todolist-backend-68f6757fc7" has successfully progressed.
+      reason: NewReplicaSetAvailable
+      status: "True"
+      type: Progressing
+    observedGeneration: 1
+    readyReplicas: 1
+    replicas: 1
+    updatedReplicas: 1
+- apiVersion: apps/v1
+  kind: Deployment
+  metadata:
+    annotations:
+      deployment.kubernetes.io/revision: "1"
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"apps/v1","kind":"Deployment","metadata":{"annotations":{"kustomize.toolkit.fluxcd.io/checksum":"e113aa7757cd18f625a456837999a423e6224ed9"},"labels":{"kustomize.toolkit.fluxcd.io/name":"project-app","kustomize.toolkit.fluxcd.io/namespace":"flux-system"},"name":"broadcaster","namespace":"todo-application"},"spec":{"replicas":1,"selector":{"matchLabels":{"app":"broadcaster"}},"template":{"metadata":{"labels":{"app":"broadcaster"}},"spec":{"containers":[{"env":[{"name":"BOT_TOKEN","valueFrom":{"secretKeyRef":{"key":"BOT_TOKEN","name":"broadcaster-secrets"}}},{"name":"TELEGRAM_CHANNEL_ID","valueFrom":{"secretKeyRef":{"key":"TELEGRAM_CHANNEL_ID","name":"broadcaster-secrets"}}},{"name":"NATS_URL","value":"nats://my-nats.default:4222"}],"image":"niklasku/dev_kub_broadcaster:01aa72b147206dd0e288f1f04f2c44e8d3178207","name":"broadcaster","resources":{"limits":{"cpu":"150m","memory":"100Mi"}}}]}}}}
+      kustomize.toolkit.fluxcd.io/checksum: e113aa7757cd18f625a456837999a423e6224ed9
+    generation: 1
+    labels:
+      kustomize.toolkit.fluxcd.io/name: project-app
+      kustomize.toolkit.fluxcd.io/namespace: flux-system
+    managedFields:
+    - apiVersion: apps/v1
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:metadata:
+          f:annotations:
+            .: {}
+            f:kubectl.kubernetes.io/last-applied-configuration: {}
+            f:kustomize.toolkit.fluxcd.io/checksum: {}
+          f:labels:
+            .: {}
+            f:kustomize.toolkit.fluxcd.io/name: {}
+            f:kustomize.toolkit.fluxcd.io/namespace: {}
+        f:spec:
+          f:progressDeadlineSeconds: {}
+          f:replicas: {}
+          f:revisionHistoryLimit: {}
+          f:selector: {}
+          f:strategy:
+            f:rollingUpdate:
+              .: {}
+              f:maxSurge: {}
+              f:maxUnavailable: {}
+            f:type: {}
+          f:template:
+            f:metadata:
+              f:labels:
+                .: {}
+                f:app: {}
+            f:spec:
+              f:containers:
+                k:{"name":"broadcaster"}:
+                  .: {}
+                  f:env:
+                    .: {}
+                    k:{"name":"BOT_TOKEN"}:
+                      .: {}
+                      f:name: {}
+                      f:valueFrom:
+                        .: {}
+                        f:secretKeyRef:
+                          .: {}
+                          f:key: {}
+                          f:name: {}
+                    k:{"name":"NATS_URL"}:
+                      .: {}
+                      f:name: {}
+                      f:value: {}
+                    k:{"name":"TELEGRAM_CHANNEL_ID"}:
+                      .: {}
+                      f:name: {}
+                      f:valueFrom:
+                        .: {}
+                        f:secretKeyRef:
+                          .: {}
+                          f:key: {}
+                          f:name: {}
+                  f:image: {}
+                  f:imagePullPolicy: {}
+                  f:name: {}
+                  f:resources:
+                    .: {}
+                    f:limits:
+                      .: {}
+                      f:cpu: {}
+                      f:memory: {}
+                  f:terminationMessagePath: {}
+                  f:terminationMessagePolicy: {}
+              f:dnsPolicy: {}
+              f:restartPolicy: {}
+              f:schedulerName: {}
+              f:securityContext: {}
+              f:terminationGracePeriodSeconds: {}
+      manager: kustomize-controller
+      operation: Update
+      time: "2021-07-03T16:51:12Z"
+    - apiVersion: apps/v1
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:metadata:
+          f:annotations:
+            f:deployment.kubernetes.io/revision: {}
+        f:status:
+          f:availableReplicas: {}
+          f:conditions:
+            .: {}
+            k:{"type":"Available"}:
+              .: {}
+              f:lastTransitionTime: {}
+              f:lastUpdateTime: {}
+              f:message: {}
+              f:reason: {}
+              f:status: {}
+              f:type: {}
+            k:{"type":"Progressing"}:
+              .: {}
+              f:lastTransitionTime: {}
+              f:lastUpdateTime: {}
+              f:message: {}
+              f:reason: {}
+              f:status: {}
+              f:type: {}
+          f:observedGeneration: {}
+          f:readyReplicas: {}
+          f:replicas: {}
+          f:updatedReplicas: {}
+      manager: k3s
+      operation: Update
+      time: "2021-07-03T17:40:47Z"
+    name: broadcaster
+    namespace: todo-application
+    resourceVersion: "66838"
+    uid: 8f259db2-e14b-4881-9ee4-dbfb82c1d41e
+  spec:
+    progressDeadlineSeconds: 600
+    replicas: 1
+    revisionHistoryLimit: 10
+    selector:
+      matchLabels:
+        app: broadcaster
+    strategy:
+      rollingUpdate:
+        maxSurge: 25%
+        maxUnavailable: 25%
+      type: RollingUpdate
+    template:
+      metadata:
+        annotations:
+          linkerd.io/inject: enabled
+        labels:
+          app: broadcaster
+      spec:
+        containers:
+        - env:
+          - name: BOT_TOKEN
+            valueFrom:
+              secretKeyRef:
+                key: BOT_TOKEN
+                name: broadcaster-secrets
+          - name: TELEGRAM_CHANNEL_ID
+            valueFrom:
+              secretKeyRef:
+                key: TELEGRAM_CHANNEL_ID
+                name: broadcaster-secrets
+          - name: NATS_URL
+            value: nats://my-nats.default:4222
+          image: niklasku/dev_kub_broadcaster:01aa72b147206dd0e288f1f04f2c44e8d3178207
+          imagePullPolicy: IfNotPresent
+          name: broadcaster
+          resources:
+            limits:
+              cpu: 150m
+              memory: 100Mi
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+  status:
+    availableReplicas: 1
+    conditions:
+    - message: ReplicaSet "broadcaster-695cf68f97" has successfully progressed.
+      reason: NewReplicaSetAvailable
+      status: "True"
+      type: Progressing
+    - message: Deployment has minimum availability.
+      reason: MinimumReplicasAvailable
+      status: "True"
+      type: Available
+    observedGeneration: 1
+    readyReplicas: 1
+    replicas: 1
+    updatedReplicas: 1
+kind: List
+metadata: {}
+---
