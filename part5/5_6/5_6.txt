@@ -1,0 +1,22 @@
+MariaDB     - used outside this course
+MongoDB     - used outside this course
+MySql       - user outside this course
+PostgreSQL  - Used as the database in this course
+redis       - Used outsie this course
+Nats        - used in the messaging system in part 4
+Flux        - used in the gitops workflow
+circleci    - used outside of this course
+github Actions - used in all workflows created in this course
+gitlab      - used outside of this course
+jenkins     - used outside of this course
+travisCi    - used outside of this course
+k3s         - used to create our local cluster
+GKE         - hosted cluster used in part 3
+google cloud- used to install the google cloud cli
+heroku      - used outside of this course
+prometheus  - used for metrics in lens and in other parts of the course
+grafana     - was used with prometheus, not sure about this though
+grafana loki - used to display logs?
+google container registry - used to store our containers in google cloud
+azure registry - used outside of this course
+traefik proxy - used by k3s as the in the ingress
