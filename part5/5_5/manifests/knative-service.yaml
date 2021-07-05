@@ -1,0 +1,27 @@
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  name: pingpong-knative
+  namespace: main-application
+spec:
+  template:
+    metadata: 
+      name: pingpong-knative-app
+    spec:
+      containers:
+        - image: niklasku/dev_kub_pingpong:5_5_1
+          env:
+            - name: APP_PORT
+              value: "8080"
+            - name: DB_NAME
+              value: "postgres_db"
+            - name: DB_USER
+              value: "postgres_user"
+            - name: DB_HOST_URL
+              value: "postgres"
+            - name: DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: postgres-password
+                  key: DB_PASSWORD
+
